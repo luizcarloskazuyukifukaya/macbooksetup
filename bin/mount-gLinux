@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Mount gLinux home directory to macbook pro
+
+# gLinux Server
+gLinuxServer="luiz.c.googlers.com"
+echo "Mounting directory on $gLinuxServer"
+
+# Mount directory
+gLinuxHome="/usr/local/google/home/kazuyukif"
+echo "Mounting directory is $gLinuxHome"
+
+# Mount point (macbook)
+macbookMountPoint="/Users/kazuyukif/gLinuxHome"
+echo "Local directory on this machine is $macbookMountPoint"
+
+#sshfs options
+#sshfsOptions="-oauto_cache -oiosize=65536 -oallow_recursion -oreconnect -oallow_root"
+sshfsOptions="-oauto_cache -oiosize=65536 -oreconnect -oallow_root"
+echo "Mount option is $sshfsOptions"
+
+# solution to run sshfs without "mount_osxfuse: failed to mount ..." error.
+/Library/Filesystems/osxfuse.fs/Contents/Resources/load_osxfuse; sudo sysctl vfs.generic.osxfuse.tunables.admin_group=$(id -g)
+
+# Execute sshfs command here.
+sshfs $gLinuxServer:$gLinuxHome $macbookMountPoint $sshfsOptions
+
+#sshfs luiz.c.googlers.com:/usr/local/google/home/kazuyukif /Users/kazuyukif/gLinuxHome -oauto_cache -oiosize=65536 -oallow_recursion -oreconnect -oallow_root
+
+echo "Done."

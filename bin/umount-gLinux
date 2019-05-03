@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Umount gLinux home directory from macbook pro
+
+# gLinux Server
+gLinuxServer="luiz.c.googlers.com"
+
+# Mount directory
+gLinuxHome="/usr/local/google/home/kazuyukif"
+
+# Mount point (macbook)
+macbookMountPoint="/Users/kazuyukif/gLinuxHome"
+
+echo "Current status:"
+mount | grep gLinuxHome
+
+echo "Now umounting ..."
+umount $macbookMountPoint
+
+echo "Latest status:"
+mount 
+
+echo "Done."

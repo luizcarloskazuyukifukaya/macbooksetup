@@ -1,0 +1,5 @@
+1) On Cloudtop, run prodaccess.
+2) Then on Macbook, run gcert next.
+
+3) To mount the gLinux home directory you need to execute ~/bin/mount-gLinux shell command.
+

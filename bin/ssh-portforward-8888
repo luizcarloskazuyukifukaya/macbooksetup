@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# ssh portfoward local 8888 to cloudtop
+
+# gLinux Server
+gLinuxServer="carlos.c.googlers.com"
+echo "SSH PORT FOWARD LOCAL 8888 to $gLinuxServer"
+
+#ssh options
+sshOptions="-L 8888:localhost:8888"
+echo "SSH option is $sshOptions"
+
+# gcert
+gcert
+
+# Execute ssh command here.
+ssh $gLinuxServer $sshOptions
+
+echo "Done."
